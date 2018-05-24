@@ -34,6 +34,7 @@ public class RealTimeTransactionService {
         return  statistics;
     }
 
+    /**method to delete the old transactions**/
     public void deleteOldTransactions(){
         removeMatching(transactionsList.iterator(), isOlderThanOneMinute());
     }
@@ -47,6 +48,8 @@ public class RealTimeTransactionService {
         }
     }
 
+    
+    /**method to find out all the transactions older than one minute**/
     private static Predicate<Transaction> isOlderThanOneMinute() {
         ZonedDateTime utc = ZonedDateTime.now(ZoneOffset.UTC);
         long epochInMillis = utc.toEpochSecond() * 1000;
