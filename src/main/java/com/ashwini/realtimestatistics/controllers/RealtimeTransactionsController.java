@@ -19,7 +19,7 @@ public class RealtimeTransactionsController {
     private static final Long ONE_MINUTE_IN_MILLISECOND = 60 * 1000l;
 
     @Autowired
-    TransactionService transactionService;
+    RealTimeTransactionService realTimeTransactionService;
 
 
     @RequestMapping(value = "/transactions", method = RequestMethod.POST)
@@ -29,7 +29,7 @@ public class RealtimeTransactionsController {
         if(transaction.getTimestamp() < epochInMillis - ONE_MINUTE_IN_MILLISECOND){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }else{
-            transactionService.add(transaction);
+            realTimeTransactionService.add(transaction);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
     }
