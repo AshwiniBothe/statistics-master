@@ -12,12 +12,12 @@ import java.util.Map;
 public class RealtimeStatisticsController {
 
     @Autowired
-    TransactionService transactionService;
+    RealTimeTransactionService realTimeTransactionService;
 
 
     @RequestMapping(value = "/statistics", method = RequestMethod.GET)
     public Map statistics(){
-        Map<String, Number> statistics =  transactionService.getStatistics();
+        Map<String, Number> statistics =  realTimeTransactionService.getStatistics();
         return statistics;
     }
 }
